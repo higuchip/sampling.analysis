@@ -22,7 +22,7 @@
 #Aplicação
 #
 #dados_exemplo_amostragem <- read.table("https://raw.githubusercontent.com/higuchip/sampling.analysis/master/dados_exemplo_amostragem.csv", header=T, sep = ";", dec=",")
-#source("")
+#source("https://raw.githubusercontent.com/higuchip/sampling.analysis/master/sampling.analysis.R")
 #sampling.analysis(dados_exemplo_amostragem,sys = "AS", plot_size = 200,  forest_area = 150, alfa = 0.05, LE = 0.1)
 #
 # Modificações
