@@ -1,5 +1,5 @@
 # sampling.analysis
-## Função para análise do processo amostragem de levantamento fitossociológicos em função do número de indivíduos e área basal.
+## Função para análise do processo de amostragem em levantamentos fitossociológicos em função do número de indivíduos e área basal.
 #### Autor:  Pedro Higuchi                                   
  26/05/2019
 
