@@ -18,23 +18,31 @@
 # - g) o argumento alfa representa o nível de significância pela tabela t de Student;
 # - h) o argumento LE representa o Limite de erro admissível.
 #---------------------------------------------------------------------------------------------------------------------------------------
-
+#
 #Aplicação
 #
 #dados_exemplo_amostragem <- read.table("https://raw.githubusercontent.com/higuchip/sampling.analysis/master/dados_exemplo_amostragem.csv", header=T, sep = ";", dec=",")
 #source("")
 #sampling.analysis(dados_exemplo_amostragem,sys = "AS", plot_size = 200,  forest_area = 150, alfa = 0.05, LE = 0.1)
-
+#
+# Modificações
+# Data: 27/05/2019
+# Add: Adicionado a possibilidade de troncos múltiplos para dap
 #====================================================================================================================================
 
 sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, alfa, LE){
+  
+  x[is.na(x)] <- 0
   
   matrix.data<-table(x$parc, x$spp)
   n<-dim(matrix.data)[1]  
   sample_size<-(plot_size*n)/10000
   (f <-sample_size/forest_area) 
   
-  x$SA<-(pi*x$dap^2)/40000 
+  dbhs <-x[,c(grep('dap', colnames(x)))]
+  sas<-(pi*dbhs^2)/40000
+  x$SA<-apply(sas, 1, sum)
+  
   abund<-apply(matrix.data,1,sum) 
   BA<-tapply(x$SA, x$parc, sum) 
   sub_veg <- subset(x, select = c(estratos,parc)) 
