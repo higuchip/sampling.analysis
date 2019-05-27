@@ -39,9 +39,24 @@ sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, al
   sample_size<-(plot_size*n)/10000
   (f <-sample_size/forest_area) 
   
-  dbhs <-x[,c(grep('dap', colnames(x)))]
-  sas<-(pi*dbhs^2)/40000
-  x$SA<-apply(sas, 1, sum)
+ ndaps<-grep('dap', colnames(x))
+   length(ndaps)
+  
+
+   if (length(ndaps) > 1){
+  
+     dbhs <-x[,c(grep('dap', colnames(x)))]
+     dbhs
+     sas<-(pi*dbhs^2)/40000
+     sas
+     x$SA<-apply(sas, 1, sum)
+  
+   } else {
+    
+  x$SA<-(pi*x$dap^2)/40000 #determinacao de AS para as árvores
+   }
+  
+  
   
   abund<-apply(matrix.data,1,sum) 
   BA<-tapply(x$SA, x$parc, sum) 
