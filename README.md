@@ -21,5 +21,7 @@
 Caso tenha dúvidas, sugestões ou queira contribuir, entre em contato: higuchip@gmail.com
 
 
-# Referência:
--FELFILI, JM et al. Procedimentos e métodos de amostragem de vegetação. Fitossociologia no Brasil: métodos e estudos de casos. Viçosa, MG: Universidade Federal de Viçosa, p. 86-121, 2011.
+# Referências:
+-FELFILI, J.M. et al. Procedimentos e métodos de amostragem de vegetação. Fitossociologia no Brasil: métodos e estudos de casos. Viçosa, MG: Universidade Federal de Viçosa, p. 86-121, 2011.
+
+-SCOLFORO, J.R.S.; MELLO, J.M. Inventário Florestal. Lavras/: UFLA/FAEPE, 561p., 2006
