@@ -53,6 +53,7 @@ sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, al
   
    } else {
     
+  dbh <-dados[,c(grep('dap', colnames(x)))]
   x$SA<-(pi*x$dap^2)/40000 #determinacao de AS para as árvores
    }
   
@@ -98,24 +99,24 @@ sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, al
       
       cat("--------------------------------------------")
       cat("\nERRO DE AMOSTRAGEM RELATIVO", fill=TRUE)
-      cat("Abundância", round(relative.error.fin[1],1), "%", fill=TRUE )
-      cat("Área basal", round(relative.error.fin[2],1), "%", fill=TRUE )
+      cat("Abundancia", round(relative.error.fin[1],1), "%", fill=TRUE )
+      cat("Area basal", round(relative.error.fin[2],1), "%", fill=TRUE )
       cat("--------------------------------------------")
-      cat("\nNÚMERO NECESSÁRIO DE PARCELAS", fill=TRUE)
-      cat("Abundância:",ceiling(n.min.fin[[1]]),fill=TRUE)
-      cat("Área Basal:",ceiling(n.min.fin[[2]]),fill=TRUE)
+      cat("\nNUMERO NECESSARIO DE PARCELAS", fill=TRUE)
+      cat("Abundancia:",ceiling(n.min.fin[[1]]),fill=TRUE)
+      cat("Area Basal:",ceiling(n.min.fin[[2]]),fill=TRUE)
       cat("--------------------------------------------")
       
     } else {
       n.min.inf<-(ttab^2*var.structure)/E^2
       cat("--------------------------------------------")
       cat("\nERRO DE AMOSTRAGEM RELATIVO", fill=TRUE)
-      cat("Abundância", round(relative.error.inf[1],1), "%", fill=TRUE )
-      cat("Área basal", round(relative.error.inf[2],1), "%", fill=TRUE )
+      cat("Abundancia", round(relative.error.inf[1],1), "%", fill=TRUE )
+      cat("Area basal", round(relative.error.inf[2],1), "%", fill=TRUE )
       cat("--------------------------------------------")
-      cat("\nNÚMERO NECESSÁRIO DE PARCELAS", fill=TRUE)
-      cat("Abundância:",ceiling(n.min.inf[[1]]),fill=TRUE)
-      cat("Área Basal:",ceiling(n.min.inf[[2]]),fill=TRUE)
+      cat("\nNUMERO NECESSARIO DE PARCELAS", fill=TRUE)
+      cat("Abundancia:",ceiling(n.min.inf[[1]]),fill=TRUE)
+      cat("Area Basal:",ceiling(n.min.inf[[2]]),fill=TRUE)
       cat("--------------------------------------------")
       
     }
@@ -169,24 +170,24 @@ sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, al
       n.min.fin.est<-((ttab^2)* sum_Wh_x_sh)/((E^2)+((ttab^2)*sum_Wh_x_sh_N))
       cat("--------------------------------------------")
       cat("\nERRO DE AMOSTRAGEM RELATIVO", fill=TRUE)
-      cat("Abundância:",round(relative.error.fin.est[[1]],1),"%", fill=TRUE)
-      cat("Área Basal:",round(relative.error.fin.est[[2]],1),"%",fill=TRUE)
+      cat("Abundancia:",round(relative.error.fin.est[[1]],1),"%", fill=TRUE)
+      cat("Area Basal:",round(relative.error.fin.est[[2]],1),"%",fill=TRUE)
       cat("--------------------------------------------")
-      cat("\nNÚMERO NECESSÁRIO DE PARCELAS", fill=TRUE)
-      cat("Abundância:",ceiling(n.min.fin.est[[1]]),fill=TRUE)
-      cat("Área Basal:",ceiling(n.min.fin.est[[2]]),fill=TRUE)
+      cat("\nNUMERO NECESSARIO DE PARCELAS", fill=TRUE)
+      cat("Abundancia:",ceiling(n.min.fin.est[[1]]),fill=TRUE)
+      cat("Area Basal:",ceiling(n.min.fin.est[[2]]),fill=TRUE)
       cat("--------------------------------------------")
       
     } else {
       n.min.inf.est<-(ttab^2*sum_Wh_x_sh)/E^2
       cat("--------------------------------------------")
       cat("\nERRO DE AMOSTRAGEM RELATIVO", fill=TRUE)
-      cat("Abundância:",round(relative.error.inf.est[[1]],1),"%", fill=TRUE)
-      cat("Área Basal:",round(relative.error.inf.est[[2]],1),"%",fill=TRUE)
+      cat("Abundancia:",round(relative.error.inf.est[[1]],1),"%", fill=TRUE)
+      cat("Area Basal:",round(relative.error.inf.est[[2]],1),"%",fill=TRUE)
       cat("--------------------------------------------")
-      cat("\nNÚMERO NECESSÁRIO DE PARCELAS", fill=TRUE)
-      cat("Abundância:",ceiling(n.min.inf.est[[1]]),fill=TRUE)
-      cat("Área Basal:",ceiling(n.min.inf.est[[2]]),fill=TRUE)
+      cat("\nNUMERO NECESSARIO DE PARCELAS", fill=TRUE)
+      cat("Abundancia:",ceiling(n.min.inf.est[[1]]),fill=TRUE)
+      cat("Area Basal:",ceiling(n.min.inf.est[[2]]),fill=TRUE)
       
     }  
     
@@ -223,12 +224,12 @@ sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, al
     
     cat("--------------------------------------------")
     cat("\nERRO DE AMOSTRAGEM RELATIVO", fill=TRUE)
-    cat("Abundância:",round(relative.error.abund.sis,1),"%", fill=TRUE)
-    cat("Área Basal:",round(relative.error.ba.sis,1),"%",fill=TRUE)
+    cat("Abundancia:",round(relative.error.abund.sis,1),"%", fill=TRUE)
+    cat("Area Basal:",round(relative.error.ba.sis,1),"%",fill=TRUE)
     cat("--------------------------------------------")
-    cat("\nNÚMERO NECESSÁRIO DE PARCELAS", fill=TRUE)
-    cat("Abundância:",ceiling(n.min.abund.sis),fill=TRUE)
-    cat("Área Basal:",ceiling(n.min.ba.sis),fill=TRUE)
+    cat("\nNUMERO NECESSARIO DE PARCELAS", fill=TRUE)
+    cat("Abundancia:",ceiling(n.min.abund.sis),fill=TRUE)
+    cat("Area Basal:",ceiling(n.min.ba.sis),fill=TRUE)
     cat("--------------------------------------------")
     
     
