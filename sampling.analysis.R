@@ -2,29 +2,22 @@
 # sampling.analysis                           
 # Função para análise do processo de amostragem em levantamentos fitossociológicos, em função do número de indivíduos e da área basal  
 # Autor: Pedro Higuchi, 26/05/2019
-# Como citar: 
+# Como citar:Higuchi, P. sampling.analysis: Função em linguagem de programação estatística R para análise do processo amostragem de 
+# levantamentos fitossociógicos em função do número de indivíduos e da área basal. 2019. #Disponvel em https://github.com/higuchip/sampling.analysis
 #-----------------------------------------------------------------------------------------------------------------------------------
-#
-#
-#
-#
-#----------------------------------------------------------------------------------------------------------------------------------------------------------
-#Autor:  Pedro Higuchi                                   
-# 01/04/2017							
-#Como citar:Higuchi, P. sampling.analysis: Função em linguagem de programação estatística R para análise do processo amostragem de levantamentos fitossociógicos em função do número de indivíduos e da área basal. 2019. Disponvel em https://github.com/higuchip/sampling.analysis
-#
-#
 #										                      
 # Observações:											                      
-# - a) O argumento x (planilha de dados) terá que conter as colunas parc (identificação das parcelas), spp (id. espécies),dap e estratos (obrigatório apenas no caso de amostragem estratificada);
-# - b) arquivo exemplo de entrada, disponível em https://raw.githubusercontent.com/higuchip/sampling.analysis/master/dados_exemplo_amostragem.csv
+# - a) O argumento x (planilha de dados) terá que conter as colunas parc (identificação das parcelas), 
+#   spp (id. espécies),dap e estratos (obrigatório apenas no caso de amostragem estratificada);
+# - b) arquivo exemplo de entrada, disponível em 
+#   https://raw.githubusercontent.com/higuchip/sampling.analysis/master/dados_exemplo_amostragem.csv
 # - c) O argumento sys, representa o sistema de amostragem (AS = Amostragem Simples; EST = Estratificada e SIS = Sistemática);
 # - d) O argumento plot_size representa o tamanho de cada parcela em m2;
 # - e) O argumento forest_area representa o tamanho da área florestal em ha;
 # - f) O argumento strata_area deve ser usado apenas quando sys = EST e representa um vetor numérico com as áreas de cada estrato em ha;
 # - g) o argumento alfa representa o nível de significância pela tabela t de Student;
 # - h) o argumento LE representa o Limite de erro admissível.
-#---------------------------------------------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------------------------
 
 #Aplicação
 #
@@ -37,14 +30,14 @@
 sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, alfa, LE){
   
   matrix.data<-table(x$parc, x$spp)
-  n<-dim(matrix.data)[1]  # número de parcelas
+  n<-dim(matrix.data)[1]  
   sample_size<-(plot_size*n)/10000
-  (f <-sample_size/forest_area) #intensidade da amostragem
+  (f <-sample_size/forest_area) 
   
-  x$SA<-(pi*x$dap^2)/40000 #determinacao de AS para as árvores
-  abund<-apply(matrix.data,1,sum) #vetor de abundancia por parcelas
-  BA<-tapply(x$SA, x$parc, sum) # determinação de Área Basal 
-  sub_veg <- subset(x, select = c(estratos,parc)) #subsetting takes place here
+  x$SA<-(pi*x$dap^2)/40000 
+  abund<-apply(matrix.data,1,sum) 
+  BA<-tapply(x$SA, x$parc, sum) 
+  sub_veg <- subset(x, select = c(estratos,parc)) 
   matrix_ind<-table(sub_veg$parc, sub_veg$estratos) 
   matrix_ind<-as.data.frame(as.table(matrix_ind))
   matrix_ind<-matrix_ind[matrix_ind$Freq>0,]
