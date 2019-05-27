@@ -1,11 +1,8 @@
 # sampling.analysis
-## Função para análise do processo amostragem de levantamento fitossociológicos em função do número de indivíduos e área basal, baseado em 
-
--FELFILI, JM et al. Procedimentos e métodos de amostragem de vegetação. Fitossociologia no Brasil: métodos e estudos de casos. Viçosa, MG: Universidade Federal de Viçosa, p. 86-121, 2011.
-
-
+## Função para análise do processo amostragem de levantamento fitossociológicos em função do número de indivíduos e área basal.
 #### Autor:  Pedro Higuchi                                   
  26/05/2019
+
 * Como citar
 
 * Higuchi, P. sampling.analysis: Função em linguagem de programação estatística R para análise do processo amostragem de levantamento fitossocioógicos em função do número de indivíduos e área basal. 2019. Disponvel em https://github.com/higuchip/sampling.analysis
@@ -22,3 +19,7 @@
 
 
 Caso tenha dúvidas, sugestões ou queira contribuir, entre em contato: higuchip@gmail.com
+
+
+# Referência:
+-FELFILI, JM et al. Procedimentos e métodos de amostragem de vegetação. Fitossociologia no Brasil: métodos e estudos de casos. Viçosa, MG: Universidade Federal de Viçosa, p. 86-121, 2011.
