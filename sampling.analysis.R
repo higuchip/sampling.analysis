@@ -53,7 +53,7 @@ sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, al
   
    } else {
     
-  dbh <-dados[,c(grep('dap', colnames(x)))]
+  dbh <-x[,c(grep('dap', colnames(x)))]
   x$SA<-(pi*x$dap^2)/40000 #determinacao de AS para as árvores
    }
   
