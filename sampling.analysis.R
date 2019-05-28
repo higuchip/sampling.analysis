@@ -25,9 +25,13 @@
 #source("https://raw.githubusercontent.com/higuchip/sampling.analysis/master/sampling.analysis.R")
 #sampling.analysis(dados_exemplo_amostragem,sys = "AS", plot_size = 200,  forest_area = 150, alfa = 0.05, LE = 0.1)
 #
-# Modificações
+# Modificações:
 # Data: 27/05/2019
 # Add: Adicionado a possibilidade de troncos múltiplos para dap
+#
+# Data: 28/05/2019
+# fixed: Remoção da obrigatoriedade da coluna estratos do arquivo de entrada, no caso de AS e SIS
+#
 #====================================================================================================================================
 
 sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, alfa, LE){
@@ -39,34 +43,28 @@ sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, al
   sample_size<-(plot_size*n)/10000
   (f <-sample_size/forest_area) 
   
- ndaps<-grep('dap', colnames(x))
-   length(ndaps)
+  ndaps<-grep('dap', colnames(x))
+  length(ndaps)
   
-
-   if (length(ndaps) > 1){
   
-     dbhs <-x[,c(grep('dap', colnames(x)))]
-     dbhs
-     sas<-(pi*dbhs^2)/40000
-     sas
-     x$SA<-apply(sas, 1, sum)
-  
-   } else {
+  if (length(ndaps) > 1){
     
-  dbh <-x[,c(grep('dap', colnames(x)))]
-  x$SA<-(pi*dbh^2)/40000 #determinacao de AS para as árvores
-   }
+    dbhs <-x[,c(grep('dap', colnames(x)))]
+    dbhs
+    sas<-(pi*dbhs^2)/40000
+    sas
+    x$SA<-apply(sas, 1, sum)
+    
+  } else {
+    
+    dbh <-x[,c(grep('dap', colnames(x)))]
+    x$SA<-(pi*dbh^2)/40000 #determinacao de AS para as árvores
+  }
   
   
   
   abund<-apply(matrix.data,1,sum) 
   BA<-tapply(x$SA, x$parc, sum) 
-  sub_veg <- subset(x, select = c(estratos,parc)) 
-  matrix_ind<-table(sub_veg$parc, sub_veg$estratos) 
-  matrix_ind<-as.data.frame(as.table(matrix_ind))
-  matrix_ind<-matrix_ind[matrix_ind$Freq>0,]
-  strata<-matrix_ind$Var2
-  structure<-as.data.frame(cbind(strata,abund, BA))
   
   
   
@@ -77,12 +75,14 @@ sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, al
   if(sys=="AS") {
     
     
-    mean.structure<-apply(structure[,2:3],2,mean)
+    structure<-as.data.frame(cbind(abund, BA))
+    
+    mean.structure<-apply(structure[,1:2],2,mean)
     
     E<-LE* mean.structure #Erro adimitido absoluto
     
-    var.structure<-apply(structure[,2:3],2,var) #variancia
-    sd.structure<-apply(structure[,2:3],2,sd) #desvio-padrao
+    var.structure<-apply(structure[,1:2],2,var) #variancia
+    sd.structure<-apply(structure[,1:2],2,sd) #desvio-padrao
     
     
     sde.structure.inf <- sd.structure/sqrt(n)*sqrt((1-f))
@@ -123,6 +123,15 @@ sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, al
     
     
   } else if (sys=="EST") {
+    
+    
+    sub_veg <- subset(x, select = c(estratos,parc)) 
+    matrix_ind<-table(sub_veg$parc, sub_veg$estratos) 
+    matrix_ind<-as.data.frame(as.table(matrix_ind))
+    matrix_ind<-matrix_ind[matrix_ind$Freq>0,]
+    
+    strata<-matrix_ind$Var2
+    structure<-as.data.frame(cbind(strata,abund, BA))
     
     Wh<-strata_area/forest_area
     wh<-table(structure$strata)/n
@@ -193,14 +202,14 @@ sampling.analysis<-function(x, sys, plot_size, forest_area, strata_area=NULL, al
     
   }else if (sys=="SIS") {
     
-    mean.structure<-apply(structure[,2:3],2,mean)
+    
+    structure<-as.data.frame(cbind(abund, BA))
+    mean.structure<-apply(structure[,1:2],2,mean)
     
     E.abund<-LE* mean.structure[1] #Erro adimitido absoluto
     E.ba<-LE* mean.structure[2]
     
-    # var.structure<-apply(structure[,2:3],2,var) #variancia
-    # sd.structure<-apply(structure[,2:3],2,sd) #desvio-padrao
-    # 
+    
     
     sde.structure.abund.sis <- sqrt(sum(diff(structure$abund, 1)^2)/(2*n*(n-1))*((N-n)/N)) #erro padrao da media por meio do metodo das diferencas sucessivas
     sde.structure.ba.sis <- sqrt(sum(diff(structure$BA, 1)^2)/(2*n*(n-1))*((N-n)/N)) #erro padrao da media por meio do metodo das diferencas sucessivas
