@@ -8,7 +8,7 @@
 #										                      
 # Observações:											                      
 # - a) O argumento x (planilha de dados) terá que conter as colunas parc (identificação das parcelas), 
-#   spp (id. espécies),dap e estratos (obrigatório apenas no caso de amostragem estratificada);
+#   spp (id. espécies),dap e estratos (obrigatório apenas no caso de amostragem estratificada).  Troncos múltiplos devem estar em colunas distintas (dap1, dap2, dap3...);
 # - b) arquivo exemplo de entrada, disponível em 
 #   https://raw.githubusercontent.com/higuchip/sampling.analysis/master/dados_exemplo_amostragem.csv
 # - c) O argumento sys, representa o sistema de amostragem (AS = Amostragem Simples; EST = Estratificada e SIS = Sistemática);
