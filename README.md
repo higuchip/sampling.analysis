@@ -1,12 +1,12 @@
 # sampling.analysis
-## Função R para determinação do erro de amostragem relativo e número de parcelas necessárias para um limite de erro admissível, em levantamentos fitossociológicos, com base na abundância e área basal.
+## Função para determinação do erro de amostragem relativo e número de parcelas necessárias para um limite de erro admissível, em levantamentos fitossociológicos, com base na abundância e área basal.
 
 #### Autor:  Pedro Higuchi                                   
  26/05/2019
 
 * Como citar
 
-* Higuchi, P. sampling.analysis: Função em linguagem de programação estatística R para análise do processo amostragem de levantamentos fitossociógicos em função do número de indivíduos e da área basal. 2019. Disponvel em https://github.com/higuchip/sampling.analysis
+* Higuchi, P. sampling.analysis: Função em linguagem de programação estatística R para análise da amostragem em levantamentos fitossociógicos. 2019. Disponvel em https://github.com/higuchip/sampling.analysis
 
 # Observações:											                      
 - a) O argumento x (planilha de dados) terá que conter as colunas parc (identificação das parcelas), spp (id. espécies),dap e estratos (obrigatório apenas no caso de amostragem estratificada). Troncos múltiplos devem estar em colunas distintas (dap1, dap2, dap3...);
