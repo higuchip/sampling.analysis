@@ -1,5 +1,6 @@
 # sampling.analysis
-## Função para análise do processo de amostragem em levantamentos fitossociológicos em função do número de indivíduos e da área basal.
+## Função R para determinação do erro de amostragem relativo e número de parcelas necessárias para um limite de erro admissível, em levantamentos fitossociológicos, com base na abundância e área basal.
+
 #### Autor:  Pedro Higuchi                                   
  26/05/2019
 
