@@ -9,7 +9,7 @@
 * Higuchi, P. sampling.analysis: Função em linguagem de programação estatística R para análise da amostragem em levantamentos fitossociógicos. 2019. Disponvel em https://github.com/higuchip/sampling.analysis
 
 # Observações:											                      
-- a) O argumento x (planilha de dados) terá que conter as colunas parc (identificação das parcelas), spp (id. espécies),dap e estratos (obrigatório apenas no caso de amostragem estratificada). Troncos múltiplos devem estar em colunas distintas (dap1, dap2, dap3, dap4...);
+- a) O argumento x (planilha de dados) terá que conter as colunas parc (identificação das parcelas), spp (id. espécies),dap e estratos (obrigatório apenas no caso de amostragem estratificada). Troncos múltiplos devem estar em colunas distintas (dap1, dap2, dap3...);
 - b) arquivo exemplo de entrada, disponível em https://raw.githubusercontent.com/higuchip/sampling.analysis/master/dados_exemplo_amostragem.csv
 - c) O argumento sys, representa o sistema de amostragem (AS = Amostragem Simples; EST = Estratificada e SIS = Sistemática);
 - d) O argumento plot_size representa o tamanho de cada parcela em m2;
